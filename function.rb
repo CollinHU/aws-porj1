@@ -34,6 +34,8 @@ def requestHandler(event)
     response(result[0], result[1])
   else
     response("Other requests", 404)
+  end
+  
 end
 
 
@@ -58,6 +60,7 @@ def handlePOST(httpMethod, post_body, content_type)
 
   if !valid_json(post_body)
     return "Invalid Json body", 422
+  end 
 
   ENV['JWT_SECRET'] = 'NOTASECRET'
   payload = {
