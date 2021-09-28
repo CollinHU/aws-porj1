@@ -7,7 +7,7 @@ require 'pp'
 def main(event:, context:)
   # You shouldn't need to use context, but its fields are explained here:
   # https://docs.aws.amazon.com/lambda/latest/dg/ruby-context.html
-  response(body: event, status: 200)
+  requestHandler(event)
 end
 
 def response(body: nil, status: 200)
@@ -125,6 +125,6 @@ if $PROGRAM_NAME == __FILE__
                'headers' => { 'Authorization' => "Bearer #{token}",
                               'Content-Type' => 'application/json' },
                'httpMethod' => 'GET',
-               'path' => '/'
+               'path' => '/a'
              })
 end
