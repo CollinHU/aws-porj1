@@ -111,7 +111,7 @@ if $PROGRAM_NAME == __FILE__
                'body' => '{"name": "bboe"}',
                'headers' => { 'Content-Type' => 'application/json' },
                'httpMethod' => 'POST',
-               'path' => '/token'
+               'path' => '/tokenl'
              })
 
   # Generate a token
