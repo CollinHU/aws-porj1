@@ -10,7 +10,7 @@ def main(event:, context:)
   requestHandler(event)
 end
 
-def response(body: nil, status: 200)
+def response(body, status)
   {
     body: body ? body.to_json + "\n" : '',
     statusCode: status
