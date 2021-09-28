@@ -19,7 +19,7 @@ end
 
 def requestHandler(event)
   headers = event['headers']
-  content_type = headers['Content-Type']
+  content_type = headers['Content-Type'] || ""
   authorization = headers['Authorization'] || ""
 
   httpMethod = event['httpMethod'] || ""
