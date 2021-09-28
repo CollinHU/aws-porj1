@@ -86,8 +86,8 @@ def handleGET(httpMethod, authorization)
   ENV['JWT_SECRET'] = 'NOTASECRET'
   begin
     decodedToken =  JWT.decode token, ENV['JWT_SECRET'], true, { algorithm: 'HS256' }
-    puts decodedToken
-    puts decodedToken['data']
+    #puts decodedToken
+    #puts decodedToken['data']
   rescue JWT::ImmatureSignature
     return "Not ready for reponse! ",401  
   rescue JWT::ExpiredSignature
@@ -96,7 +96,7 @@ def handleGET(httpMethod, authorization)
     return "Invalid token", 403 
   end
 
-  return decodedToken["data"], 200
+  return decodedToken[0]["data"], 200
 end
 
 
