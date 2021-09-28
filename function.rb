@@ -27,15 +27,14 @@ def requestHandler(event)
   post_body = event['body'] || ""
 
   if path == '/'
-    result = handleGET httpMethod, authorization
-    response result[0], result[1]
+    result = handleGET(httpMethod, authorization)
+    response(body: result[0], status: result[1])
   elsif path == '/token'
-    result = handlePOST httpMethod, post_body, content_type
-    response result[0], result[1]
+    result = handlePOST(httpMethod, post_body, content_type)  
+    response(body: result[0], status: result[1])
   else
-    response "Other requests", 404
+    response(body: "Other requests", status: 404)
   end
-  
 end
 
 
