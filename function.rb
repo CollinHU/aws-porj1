@@ -66,12 +66,13 @@ def handlePOST(httpMethod, post_body, content_type)
     nbf: Time.now.to_i + 2  #not before time: 2s
   }
 
-  return token:(JWT.encode payload, ENV['JWT_SECRET'], 'HS256'), 201
+  return {token: (JWT.encode payload, ENV['JWT_SECRET'], 'HS256')}, 201
 end
 
 def handleGET(httpMethod, authorization)
   if httpMethod != 'GET'
     return 'Do not use the appropriate HTTP method', 405
+  end 
 
   parserResults = authorization.split('Bearer ')
   token = (parserResults[1] || "")
@@ -94,7 +95,7 @@ def handleGET(httpMethod, authorization)
   return decodedToken["data"], 200
 end
 
-=begin
+
 if $PROGRAM_NAME == __FILE__
   # If you run this file directly via `ruby function.rb` the following code
   # will execute. You can use the code below to help you test your functions
@@ -124,4 +125,3 @@ if $PROGRAM_NAME == __FILE__
                'path' => '/'
              })
 end
-=end
