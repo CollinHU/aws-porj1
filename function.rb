@@ -10,7 +10,7 @@ def main(event:, context:)
   requestHandler(event)
 end
 
-def response(body, status)
+def response(body: nil, status: 200)
   {
     body: body ? body.to_json + "\n" : '',
     statusCode: status
@@ -27,14 +27,13 @@ def requestHandler(event)
   post_body = event['body'] || ""
 
   if path == '/'
-    result = handleGET(httpMethod, authorization)
-    response(result[0], result[1])
+    result = handleGET httpMethod, authorization
+    response result[0], result[1]
   elsif path == '/token'
-    result = handlePOST(httpMethod, post_body, content_type)
-    puts result
-    response("", result[1])
+    result = handlePOST httpMethod, post_body, content_type
+    response result[0], result[1]
   else
-    response("Other requests", 404)
+    response "Other requests", 404
   end
   
 end
@@ -111,7 +110,7 @@ if $PROGRAM_NAME == __FILE__
                'body' => '{"name": "bboe"}',
                'headers' => { 'Content-Type' => 'application/json' },
                'httpMethod' => 'POST',
-               'path' => '/tokenl'
+               'path' => '/token'
              })
 
   # Generate a token
