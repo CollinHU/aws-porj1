@@ -123,7 +123,7 @@ if $PROGRAM_NAME == __FILE__
   PP.pp main(context: {}, event: {
                'headers' => { 'Authorization' => "Bearer #{token}",
                               'Content-Type' => 'application/json' },
-               'httpMethod' => 'GET',
-               'path' => '/a'
+               'httpMethod' => 'GETl',
+               'path' => '/'
              })
 end
