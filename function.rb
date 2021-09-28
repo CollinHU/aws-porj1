@@ -30,7 +30,8 @@ def requestHandler(event)
     result = handleGET(httpMethod, authorization)
     response(result[0], result[1])
   elsif path == '/token'
-    result = handlePOST(httpMethod, post_body, content_type)  
+    result = handlePOST(httpMethod, post_body, content_type)
+    puts result
     response("", result[1])
   else
     response("Other requests", 404)
