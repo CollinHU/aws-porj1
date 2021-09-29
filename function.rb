@@ -84,7 +84,7 @@ def handleGET(httpMethod, authorization)
     return "Invalid header provided", 403
   end
 
-  ENV['JWT_SECRET'] = 'NOTASECRET'
+  ENV['JWT_SECRET'] = 'SECRET'
   begin
     decodedToken =  JWT.decode token, ENV['JWT_SECRET'], true, { algorithm: 'HS256' }
     #puts decodedToken
@@ -105,7 +105,7 @@ if $PROGRAM_NAME == __FILE__
   # If you run this file directly via `ruby function.rb` the following code
   # will execute. You can use the code below to help you test your functions
   # without needing to deploy first.
-  ENV['JWT_SECRET'] = 'NOTASECRET'
+  ENV['JWT_SECRET'] = 'SECRET'
 
   # Call /token
   PP.pp main(context: {}, event: {

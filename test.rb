@@ -3,7 +3,7 @@ if a[0]
 	puts 1
 end
 
-a = "test1 0"
+a = ""
 result = a.split('test1')
 puts "size #{ result.size }"
 
@@ -11,7 +11,10 @@ token = result[2] || "ttttt"
 puts token
 puts token.empty?
 puts token
+puts "check the first"
 puts result[0].empty?
+puts result[0].nil?
+puts "check the second"
 puts result[1].nil?
 
 #puts result[0]
