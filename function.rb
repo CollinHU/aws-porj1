@@ -62,7 +62,7 @@ def handlePOST(httpMethod, post_body, content_type)
     return "Invalid Json body", 422
   end 
 
-  ENV['JWT_SECRET'] = 'NOTASECRET'
+  ENV['JWT_SECRET'] = 'SECRET'
   payload = {
     data: JSON.parse(post_body),
     exp: Time.now.to_i + 5, #expire time 5s
