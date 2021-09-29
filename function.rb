@@ -19,8 +19,9 @@ end
 
 def requestHandler(event)
   headers = event['headers']
-  content_type = headers['Content-Type'] || ""
-  authorization = headers['Authorization'] || ""
+  headers = headers.transform_keys(&:downcase)
+  content_type = headers['content-type'] || ""
+  authorization = headers['authorization'] || ""
 
   httpMethod = event['httpMethod'] || ""
   path = event['path']
@@ -79,7 +80,7 @@ def handleGET(httpMethod, authorization)
   parserResults = authorization.split('Bearer ')
   token = (parserResults[1] || "")
 
-  if !parserResults[0].empty? and token.empty?
+  if parserResults[0].nil? or !parserResults[0].empty? or token.empty?
     return "Invalid header provided", 403
   end
 
